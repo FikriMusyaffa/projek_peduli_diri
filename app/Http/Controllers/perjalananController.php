@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Perjalanan;
 use App\Models\User;
+use Illuminate\Validation\Rule;
 
 class perjalananController extends Controller
 {
@@ -42,8 +43,11 @@ class perjalananController extends Controller
     {
         $request->validate(
             [
-                'tanggal'=>'required|date|before_or_equal:today|unique:perjalanans,tanggal',
-                'jam'=>'required|unique:perjalanans,jam',
+                'tanggal'=>'required|date|before_or_equal:today',
+                'jam'=>[
+                    'required',
+                    Rule::unique('perjalanans')->where('tanggal', $request->tanggal)->where('jam', $request->jam)
+                ],
             ]);
 
         $data=[

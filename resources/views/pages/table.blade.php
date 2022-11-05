@@ -8,10 +8,6 @@
 
 @section('card-content')
 
-    {{-- @php
-    $no = 1;
-    @endphp --}}
-
     @if (session('alert-success'))
         <div class="alert alert-success alert-dismissible show fade">
             <div class="alert-body">
@@ -118,7 +114,7 @@
                             </div>
                         </th>
                         <th scope="col">
-                            <div class="align-self-center">Action</div>
+                            <div class="align-self-center">Aksi</div>
                         </th>
                     </tr>
                 </thead>
